@@ -1,0 +1,9 @@
+<div class="wrapper">
+  <div class="header">Please enter your name</div>
+  <div class="content">
+    <form (ngSubmit)="login()">
+      <input type="text" pInputText name="name" [(ngModel)]="name" required/>
+      <button pButton type="submit" [disabled]="!name">Ok</button>
+    </form>
+  </div>
+</div>

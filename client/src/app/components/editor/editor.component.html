@@ -1,0 +1,26 @@
+<div class="list-wrapper">
+  <div class="list-header">File List</div>
+  <p-listbox
+    [options]="files | async"
+    [ngModel]="selectedFile"
+    (ngModelChange)="fileSelectionChanged($event)"
+  ></p-listbox>
+</div>
+
+<div class="editor-wrapper">
+  <div class="editor-header">
+    @if (activeUsers | async;  as users) {
+      @if(users?.length) {
+        Who is editing:  
+        @for (user of users; track user) {
+          {{ user }}
+        } 
+      }
+    }
+    <button pButton class="p-button-sm" type="button" [disabled]="!selectedFile" (click)="downloadFile()">Download JSON</button>
+  </div>
+  @if(!selectedFile) {
+    <div class="select-file"><span>Select a file</span></div>
+  }
+  <json-editor [options]="editorOptions" [data]="fileData | async" (change)="updateFile($event)"></json-editor>
+</div>
